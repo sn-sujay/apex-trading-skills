@@ -306,6 +306,5 @@ if __name__ == "__main__":
     print(f"Can fetch VIX: {can} - {msg}")
     
     # Show status
-    print("
-Rate Limit Status:")
+    print("\nRate Limit Status:")
     print(json.dumps(get_rate_limit_status(), indent=2))

@@ -24,11 +24,14 @@ def get_cached_vix():
             cached_time = datetime.fromisoformat(cache.get('fetched_at', '2000-01-01'))
             age = datetime.now() - cached_time
             
-            if age < timedelta(minutes=CACHE_MAX_AGE_MINUTES):
+            age_seconds = age.total_seconds()
+            age_minutes = age_seconds / 60
+            
+            if age_minutes < CACHE_MAX_AGE_MINUTES:
                 print(f"[CACHE] Using cached VIX from {cache.get('fetched_at')}")
                 return cache
             else:
-                print(f"[CACHE] Cache stale (age: {age.minutes} min)")
+                print(f"[CACHE] Cache stale (age: {age_minutes:.1f} min)")
     except Exception as e:
         print(f"[CACHE] Error reading cache: {e}")
     return None
