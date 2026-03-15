@@ -6,17 +6,20 @@ Complete schedule for APEX autonomous trading system. All times are **IST (India
 
 ## Cronjobs Overview
 
-### 7 Cronjobs (Current Configuration)
+### 12 Cronjobs (Current Configuration)
 
 | Time IST | Schedule | Skill | Action | Status |
 |----------|----------|-------|--------|--------|
-| 8:00 AM | `0 8 * * 1-5` | apex-india-trading-central-command | Pre-market setup | ✅ Active |
-| 9:15 AM | `15 9 * * 1-5` | apex-market-regime-engine | Classify regime at open | ✅ Active |
+| Sat 10 AM | `0 10 * * 6` | apex-weekend-scanner | Weekend scan | ✅ Active |
+| Sun 10 AM | `0 10 * * 0` | apex-weekend-scanner | Weekend scan | ✅ Active |
+| Sun 6 PM | `0 18 * * 0` | apex-weekend-scanner | Pre-Monday briefing | ✅ Active |
+| Mon-Fri 8:00 AM | `0 8 * * 1-5` | apex-pre-market-briefing | Morning briefing + news | ✅ Active |
+| Mon-Fri 9:15 AM | `15 9 * * 1-5` | apex-market-regime-engine | Classify regime | ✅ Active |
 | Every 5 min | `*/5 9-15 * * 1-5` | apex-core-orchestrator | Event coordination | ✅ Active |
 | Hourly 9AM-2PM | `0 9-14 * * 1-5` | apex-options-strategy-engine | Generate signals | ✅ Active |
 | 3:30 PM | `30 15 * * 1-5` | apex-self-evolution-engine | Post-market learning | ✅ Active |
 | 3:40 PM | `40 15 * * 1-5` | apex-india-trading-central-command | EOD reconciliation | ✅ Active |
-| Sunday 8PM | `0 20 * * 0` | apex-system-health-monitor | Weekend system check | ✅ Active |
+| Sunday 8PM | `0 20 * * 0` | apex-sunday-health | Weekend system check | ✅ Active |
 
 ---
 
