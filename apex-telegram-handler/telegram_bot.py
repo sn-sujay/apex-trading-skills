@@ -9,14 +9,14 @@ import json
 import requests
 from datetime import datetime
 from pathlib import Path
+import yaml
 
 # Config paths
 CONFIG_PATH = os.path.expanduser("~/.apex/config.yaml")
 STATE_PATH = os.path.expanduser("~/.apex/state.json")
 
-# Load config
+# Load config from YAML
 def load_config():
-    import yaml
     with open(CONFIG_PATH, 'r') as f:
         return yaml.safe_load(f)
 
