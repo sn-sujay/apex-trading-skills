@@ -44,6 +44,17 @@
       "VOLATILE": {"ANY": "Long Straddle"},
       "HIGH_VOLATILITY": {"ANY": "Long Strangle"}
     },
+    "strike_selection": {
+      "primary": "ATM",
+      "spread_strikes": "ATM +/- 1-2",
+      "expiry": "nearest_monthly",
+      "expiry_rule": "last_tuesday_of_month",
+      "no_weekly": true,
+      "nearest_expiry": {
+        "current": "2026-03-31",
+        "next": "2026-04-28"
+      }
+    },
     "risk_params": {
       "max_risk_per_trade_pct": 0.5,
       "max_daily_trades": 3,
@@ -64,8 +75,9 @@
       "carry_conditions": {
         "min_profit_pct": 30,
         "vix_below": 15,
-        "week_expiry": false,
-        "llm_approval": true
+        "month_expiry": false,
+        "llm_approval": true,
+        "no_carry_on_expiry_day": true
       },
       "allow_overnight": true
     },
