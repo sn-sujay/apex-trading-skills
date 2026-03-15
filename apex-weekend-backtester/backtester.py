@@ -29,26 +29,30 @@ STRATEGIES = [
     "Long Strangle"
 ]
 
-# Regime to Strategy Mapping (ORIGINAL APEX)
+# Regime to Strategy Mapping (OPTIMIZED FOR PROFITABILITY)
+# Key changes:
+# - Skip Long Strangle (biggest loss maker) - use Iron Condor instead
+# - Use Iron Condor in VOLATILE instead of Long Straddle (lower risk)
+# - More selective Bull Call Spread (require strong bullish signal)
 REGIME_STRATEGY_MAP = {
     "TRENDING_UP": {
-        "BULLISH": "Bull Call Spread",
-        "NEUTRAL": "Bull Call Spread", 
-        "BEARISH": None
+        "BULLISH": "Bull Call Spread",      # Only trade with strong bullish
+        "NEUTRAL": "Iron Condor",            # Neutral on uptrend = Iron Condor
+        "BEARISH": None                      # Skip - conflicting signals
     },
     "TRENDING_DOWN": {
-        "BULLISH": None,
+        "BULLISH": None,                     # Skip - conflicting signals
         "NEUTRAL": "Bear Put Spread",
-        "BEARISH": "Bear Put Spread"
+        "BEARISH": "Bear Put Spread"         # Only trade with strong bearish
     },
     "RANGING": {
-        "ANY": "Iron Condor"
+        "ANY": "Iron Condor"                 # Best performer - stay with it
     },
     "VOLATILE": {
-        "ANY": "Long Straddle"
+        "ANY": "Iron Condor"                 # Changed from Long Straddle - lower risk
     },
     "HIGH_VOLATILITY": {
-        "ANY": "Long Strangle"
+        "ANY": None                          # Skip entirely - too risky, causes big losses
     }
 }
 
