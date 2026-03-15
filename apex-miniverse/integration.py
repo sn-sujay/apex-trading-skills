@@ -12,7 +12,7 @@ from datetime import datetime
 import threading
 
 # Configuration
-MINIVERSE_URL = "https://miniverse-public-production.up.railway.app"
+MINIVERSE_URL = "http://localhost:4321"  # Use local server
 STATE_FILE = os.path.expanduser("~/.apex/state.json")
 
 # APEX Agents to visualize
